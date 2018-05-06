@@ -1,4 +1,4 @@
-package com.zhoujian.solutions.dataStructure.Tree;
+package com.zhoujian.solutions.dataStructure.tree;
 
 /**
  * @author zhoujian123@hotmail.com 2018/4/30 21:27
