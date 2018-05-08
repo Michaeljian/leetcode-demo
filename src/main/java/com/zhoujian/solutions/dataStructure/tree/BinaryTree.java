@@ -7,4 +7,6 @@ package com.zhoujian.solutions.dataStructure.tree;
  * http://www.cnblogs.com/gl-developer/p/7259251.html
  */
 public class BinaryTree {
+
+
 }
