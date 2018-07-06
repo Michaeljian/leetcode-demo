@@ -8,25 +8,4 @@ import java.util.LinkedList;
  */
 public class Graph {
 
-
-    /**
-     * 邻接表表示
-     */
-    private int V;  //顶点
-    private LinkedList<Integer> adj[]; //相邻
-
-    //构造器
-    Graph(int v){
-        V=v;
-        adj = new LinkedList[v];
-        for (int i = 0; i <v ; i++) {
-            adj[i] = new LinkedList();
-        }
-    }
-
-    //构造出边
-    void addEdge(int v, int w){
-        adj[v].add(w);
-    }
-
 }

@@ -22,7 +22,6 @@ package com.zhoujian.solutions.dataStructure.sort;
  * T（n）= 2T（n / 2）+ \ C（n）
  *
  * 上述复发的解决方案是O（nLogn）。它可以使用主定理的情况2来解决
- *
  * 平均情况时间复杂度：O(nlogn)
  *
  * 平均空间复杂度：O(logn)
@@ -31,62 +30,7 @@ package com.zhoujian.solutions.dataStructure.sort;
  */
 public class QuickSort {
 
-    /**
-     * partition就是划分操作，将表A[low...high]划分为满足上述条件的两个子表
-     * @param arr
-     * @param low
-     * @param high
-     * @return 返回的是枢轴值
-     */
-    public static int partition(int arr[],int low,int high){
 
-        //将数组的第一个值作为枢轴值
-        int pivot = arr[low];
-        while (low < high){
-            while (low < high && arr[high] >= pivot){
-                //指针左移
-                --high;
-            }
-            //将比枢轴值小的元素移动到左端
-            arr[low]=arr[high];
-            while (low < high && arr[low] <=pivot){
-                //指针右移
-                ++low;
-            }
-            //将比枢轴值大的元素移动到右端
-            arr[high]=arr[low];
-        }
-        //此时low就是pivot最终的位置
-        arr[low] = pivot;
-        return low;
-    }
-
-    public static void sort(int arr[],int low,int high){
-
-        if (low < high){
-            //划分
-            int pi = partition(arr, low, high);
-            //依次对两个子表进行递归排序，其中枢轴值就放在其最终位置
-            sort(arr,low,pi-1);
-            sort(arr, pi+1, high);
-        }
-    }
-
-
-    public static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        int arr[] ={10,7,8,9,1,5};
-        int n =arr.length;
-        sort(arr,0,n-1);
-        printArray(arr);
-    }
 
 }
 

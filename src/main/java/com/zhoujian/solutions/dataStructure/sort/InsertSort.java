@@ -19,37 +19,37 @@ package com.zhoujian.solutions.dataStructure.sort;
  */
 public class InsertSort {
 
-    //输入一串随机数，放到数组中
-    public static void sort(int arr[]){
-
-        int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            //从第二个开始比较
-            int key = arr[i];
-            int j = i-1;
-            //如果要比较的值和它前面的值要小，则将这个值放到比它小的位置上去
-            while (j>=0 && arr[j] > key){
-                //大的值往后移
-                arr[j+1]=arr[j];
-                j=j-1;
+    /**
+     * 直接插入排序
+     * @param arr 输入的数组
+     * @param n 数组的长度
+     */
+    void insertSort(int arr[],int n){
+        int i,j;
+        //从下标为1的开始比较
+        for (i =1; i <n; i++) {
+            //如果后面的值小于前面已排好序的最大值，则依次还往前比较（从后往前比较）
+            if (arr[i] <arr[i-1]){
+                //复制为哨兵，arr[]不存放元素
+                arr[0] = arr[i];
+                for (j = i-1; arr[0]<arr[j]; j--) {
+                    //如果输入的值小于已排序中的值，则向后挪位
+                    arr[j+1] = arr[j];
+                }
+                //如果不小于，则找到合适的位置插入
+                arr[j+1]=arr[0];
             }
-            //最终的要比较的那个值位置
-            arr[j+1]=key;
         }
-    }
-
-    public static void printArray(int arr[]){
-
-        int n =arr.length;
-        for (int i = 0; i <n; i++) {
-            System.out.println(arr[i] + "");
-        }
-        System.out.println();
     }
 
     public static void main(String[] args) {
-        int arr[] ={12,11,13,5,6};
-        sort(arr);
-        printArray(arr);
+
+        int arr[]= {49,38,65,97,76,13,27,49};
+        int n = arr.length;
+        InsertSort insert = new InsertSort();
+        insert.insertSort(arr,n);
+        for (int k = 0; k < n; k++) {
+            System.out.println(arr[k]);
+        }
     }
 }
