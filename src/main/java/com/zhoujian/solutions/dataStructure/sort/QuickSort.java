@@ -1,5 +1,7 @@
 package com.zhoujian.solutions.dataStructure.sort;
 
+import com.zhoujian.solutions.dataStructure.PrintArray;
+
 /**
  * @author zhoujian123@hotmail.com 2018/4/30 17:47
  *
@@ -25,12 +27,53 @@ package com.zhoujian.solutions.dataStructure.sort;
  * 平均情况时间复杂度：O(nlogn)
  *
  * 平均空间复杂度：O(logn)
- *
  * 不稳定：快速排序是一个不稳定的排序算法
  */
 public class QuickSort {
 
+    /**
+     * 分区函数
+     * @param arr 输入的字符序列
+     * @param low 左指针
+     * @param high 右指针
+     * @return 返回枢轴存放的最终位置
+     */
+    int partition(int arr[],int low,int high){
 
+        //一般选择第一个元素作为枢轴
+        int pivat = arr[low];
+
+        while (low<high){
+            while (low<high&&arr[high]>=pivat) --high;
+            //否则将比枢轴值小的元素移动到左端
+            arr[low]=arr[high];
+            while (low<high&&arr[low]<=pivat) ++low;
+            //否则比枢轴值大的元素移动到右端
+            arr[high]=arr[low];
+        }
+        //枢轴值存放的最终位置，可以利用low和high来表示
+        arr[low]=pivat;
+        return low;
+    }
+
+    void quicksort(int arr[],int low,int high){
+        if ( low<high) {
+            //划分区间
+            int partition = partition(arr, low, high);
+            quicksort(arr,low,partition-1);
+            quicksort(arr,partition+1,high);
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[]={49,38,65,97,76,13,27,49};
+        int low =0;
+        int high=arr.length-1;
+        QuickSort quickSort = new QuickSort();
+        quickSort.quicksort(arr,low,high);
+        PrintArray.printArry(arr);
+
+    }
 
 }
 
