@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author zhoujian123@hotmail.com 2018/4/26 10:28
  * 图的广度优先遍历----借助队列
+ * 广度优先遍历类似于二叉树的层序遍历
  * 图是用邻接表来存储（对于稀疏图来说，邻接表比较合适）
  * 时间复杂度：O(V+E)，其中V是图中顶点的数量，E是图中边的数量
  */
@@ -13,7 +14,7 @@ public class BreadthFirstSerch {
     private int V; //顶点
     private LinkedList<Integer> adj[]; //领接表
 
-    //构造器
+    //构造器，利用链表。v是顶点的个数
     BreadthFirstSerch(int v){
         V=v;
         adj = new LinkedList[v];
@@ -45,7 +46,8 @@ public class BreadthFirstSerch {
             s=queue.poll();
             System.out.println(s+"");
 
-            //获取全部的顶点并出队，如果邻接的点未被访问，则设置为已被访问且入队
+            //获取与s相关联的全部的顶点，如果邻接的点未被访问，则设置为已被访问且入队
+            //i是一种list列表的迭代器，用于存储相邻节点的列表
             ListIterator<Integer> i = adj[s].listIterator();
             while (i.hasNext()){
                 int n = i.next();
@@ -77,6 +79,5 @@ public class BreadthFirstSerch {
         System.out.println("广度优先遍历从3开始遍历");
         g.BFS(3);
     }
-
 
 }
